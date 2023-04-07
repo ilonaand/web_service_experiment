@@ -5,10 +5,10 @@ Properties:
   RUID: 148998542_1521203129
   Name: "GS.Web.Web-services.Конфигурация.Функции"
   Caption: "GS.Web.Web-services.Конфигурация.Функции"
-  Version: "1.0.0.221"
+  Version: "1.0.0.222"
   Optional: False
   Internal: True
-  MD5: 9BCAC67B0694CE6B5EEF0F1BC30E1233
+  MD5: 6A0AF322271095C5B77F762250226FE5
 Uses: 
   - "147029090_1220419898 GS.Общие.Функции работы с json"
   - "148998332_1521203129 GS.Web.Web-services.Конфигурация.Метаданные"
@@ -16072,7 +16072,7 @@ Objects:
       PUBLICFUNCTION: 1
       SHORTCUT: ~
       USEDEBUGINFO: 0
-      EDITIONDATE: 2023-03-31T13:26:23+03:00
+      EDITIONDATE: 2023-04-07T13:34:22+03:00
       DISPLAYSCRIPT: | 
         WEB_PROCESS_READY_REF_2_0_0
         GETJSONHEADER
@@ -16363,8 +16363,14 @@ Objects:
                    ", ""multipartEOF"": true "
               end if
               redim Preserve jsonRefs(CountStreams)
+              dim commandType
+              if refName <> "" then
+                commandType = "ONE_REF"
+              else
+                commandType = "REFS"
+              end if
               jsonHeader = getJsonHeader(AppSystemId, AppSystem, Companykey, Company, producerkey, producer,_
-                consumerkey, consumer, msgID, deviceId, version, mult)
+                consumerkey, consumer, msgID, deviceId, version, mult, commandType)
               if json <> "" then json = json + ","
               jsonRefs(CountStreams) = jsonHeader + json +  SS.DataString + jsonFooter
               CountStreams = CountStreams + 1
@@ -16380,7 +16386,7 @@ Objects:
         End Function
         
         function getJsonHeader(AppSystemId, AppSystem, Companykey, Company, producerkey, producer,_
-          consumerkey, consumer, msgID, deviceId, version, mult)
+          consumerkey, consumer, msgID, deviceId, version, mult, commandType)
           dim Creator, SS, order
           set Creator = new TCreator
           dim ibsqlGetID
@@ -16416,7 +16422,7 @@ Objects:
           SS.WriteLn("""dateTime"":""" & web_formatDate(Date) & """")
           SS.WriteLn("}, ")
           SS.WriteLn("""body"":{")
-          SS.WriteLn("""type"":""REFS"",")
+          SS.WriteLn("""type"":" & web_JSonString(commandType) & ",")
           SS.WriteLn("""version"":" & version & ", ")
           SS.WriteLn("""payload"": {" )
           getJsonHeader = SS.DataString

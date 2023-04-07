@@ -5,10 +5,10 @@ Properties:
   RUID: 147170928_1545785791
   Name: "GS.Web.Web-services.Конфигурация.Агенты.Функции"
   Caption: "GS.Web.Web-services.Конфигурация.Агенты.Функции"
-  Version: "1.0.0.61"
+  Version: "1.0.0.62"
   Optional: False
   Internal: True
-  MD5: D63ADF3C24189C13BC5FB680F66F3E83
+  MD5: 06224FD57B5B4E5C0FBE1069F8AEC928
 Uses: 
   - "148998542_1521203129 GS.Web.Web-services.Конфигурация.Функции"
   - "148998636_1521203129 GS.Web.Web-services.Конфигурация.Исследователь"
@@ -3107,7 +3107,7 @@ Objects:
       PUBLICFUNCTION: 1
       SHORTCUT: ~
       USEDEBUGINFO: 0
-      EDITIONDATE: 2023-03-31T15:44:00+03:00
+      EDITIONDATE: 2023-04-07T12:59:16+03:00
       DISPLAYSCRIPT: | 
         WEB_GETDEBT2_0_0
         FINALIZATION_GETDEBT2_0_0
@@ -3466,33 +3466,33 @@ Objects:
           end if
         
           'Подготавливаем StringStream, в котором будет содержаться массив справочников
-          SS.WriteLn("{""status"": ""READY""," )
-          SS.WriteLn("""head"":{" )
-          SS.WriteLn("""appSystem"":{")
-          SS.WriteLn("""id"":""" & AppSystemId & """, ")
-          SS.WriteLn("""name"":" & web_JSonString(AppSystem) & "},")
-          SS.WriteLn("""company"":{")
-          SS.WriteLn("""id"":""" & Companykey & """, ")
-          SS.WriteLn("""name"":" & web_JSonString(Company) & "},")
-          SS.WriteLn("""producer"":{")
-          SS.WriteLn("""id"":""" & producerkey & """, ")
-          SS.WriteLn("""name"":""" & producer & """},")
-          SS.WriteLn("""consumer"":{")
-          SS.WriteLn("""id"":""" & consumerkey & """, ")
-          SS.WriteLn("""name"":""" & consumer & """},")
-          if msgID <> "" then
-            SS.WriteLn("""replyTo"":""" & msgID & """, ")
-          end if
-          SS.WriteLn("""order"":" & order & ", ")
-          SS.WriteLn("""deviceId"":""" & deviceId & """, ")
-          SS.WriteLn("""dateTime"":""" & web_formatDate(Date) & """")
-          SS.WriteLn("}, ")
-          SS.WriteLn("""body"":{")
-          SS.WriteLn("""type"":""ONE_REF"",")
-          SS.WriteLn("""version"":" & version & ", ")
-          SS.WriteLn("""payload"": {" )
+        '  SS.WriteLn("{""status"": ""READY""," )
+        '  SS.WriteLn("""head"":{" )
+        '  SS.WriteLn("""appSystem"":{")
+        '  SS.WriteLn("""id"":""" & AppSystemId & """, ")
+        '  SS.WriteLn("""name"":" & web_JSonString(AppSystem) & "},")
+        '  SS.WriteLn("""company"":{")
+        '  SS.WriteLn("""id"":""" & Companykey & """, ")
+        '  SS.WriteLn("""name"":" & web_JSonString(Company) & "},")
+        '  SS.WriteLn("""producer"":{")
+        '  SS.WriteLn("""id"":""" & producerkey & """, ")
+        '  SS.WriteLn("""name"":""" & producer & """},")
+        '  SS.WriteLn("""consumer"":{")
+        '  SS.WriteLn("""id"":""" & consumerkey & """, ")
+        '  SS.WriteLn("""name"":""" & consumer & """},")
+        '  if msgID <> "" then
+        '    SS.WriteLn("""replyTo"":""" & msgID & """, ")
+        '  end if
+        '  SS.WriteLn("""order"":" & order & ", ")
+        '  SS.WriteLn("""deviceId"":""" & deviceId & """, ")
+        '  SS.WriteLn("""dateTime"":""" & web_formatDate(Date) & """")
+        '  SS.WriteLn("}, ")
+        '  SS.WriteLn("""body"":{")
+        '  SS.WriteLn("""type"":""ONE_REF"",")
+        '  SS.WriteLn("""version"":" & version & ", ")
+        '  SS.WriteLn("""payload"": {" )
           dim ssTemp, jsonText, jsonFooter
-          jsonText = SS.DataString
+          'jsonText = SS.DataString
           jsonFooter = "}}}"
         
           jsonText = web_process_ready_ref_2_0_0(contactkey, consumer, consumerkey, Companykey, AppSystemkey, _
