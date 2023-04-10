@@ -5,10 +5,10 @@ Properties:
   RUID: 148998542_1521203129
   Name: "GS.Web.Web-services.Конфигурация.Функции"
   Caption: "GS.Web.Web-services.Конфигурация.Функции"
-  Version: "1.0.0.222"
+  Version: "1.0.0.223"
   Optional: False
   Internal: True
-  MD5: 6A0AF322271095C5B77F762250226FE5
+  MD5: 0C63FCF15689C4D67E8C460C4153E219
 Uses: 
   - "147029090_1220419898 GS.Общие.Функции работы с json"
   - "148998332_1521203129 GS.Web.Web-services.Конфигурация.Метаданные"
@@ -15336,7 +15336,7 @@ Objects:
       PUBLICFUNCTION: 1
       SHORTCUT: ~
       USEDEBUGINFO: 0
-      EDITIONDATE: 2023-03-31T17:57:12+03:00
+      EDITIONDATE: 2023-04-10T13:50:17+03:00
       DISPLAYSCRIPT: | 
         WEB_GETMESSAGEFROMSERVER2_0_0
         WEB_GETMESSAGEFROMSERVER2_0_0_ROLLBACK
@@ -15442,7 +15442,7 @@ Objects:
                   set ibsqlDevice = Creator.GetObject(nil, "TIBSQL", "")
                   ibsqlDevice.Transaction = Transaction
                   except web_getMessageFromServer2_0_0_RollBack(Transaction, processId)
-                  'on error resume next
+                  on error resume next
                   dim DataStreamArr(), CountStreams
                     CountStreams = -1
                   for m = 0 to countResults - 1
